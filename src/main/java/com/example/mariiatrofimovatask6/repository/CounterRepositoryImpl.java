@@ -35,7 +35,7 @@ public class CounterRepositoryImpl implements CounterRepository {
 
     @Override
     public Optional<Counter> get(String name) {
-        return Optional.of(counters.get(name));
+        return counters.containsKey(name) ? Optional.of(counters.get(name)) : Optional.empty();
     }
 
     @Override

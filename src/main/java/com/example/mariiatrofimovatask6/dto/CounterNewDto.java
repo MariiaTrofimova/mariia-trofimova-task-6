@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class CounterNewDto {
     @NotBlank
