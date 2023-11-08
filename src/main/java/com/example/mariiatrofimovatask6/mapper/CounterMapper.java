@@ -10,14 +10,14 @@ public class CounterMapper {
     public static CounterDto toDTO(Counter counter) {
         return CounterDto.builder()
                 .name(counter.getName())
-                .count(counter.getCount())
+                .value(counter.getValue())
                 .build();
     }
 
     public static Counter toCounter(CounterNewDto dto) {
         return Counter.builder()
                 .name(dto.getName())
-                .count(0L)
+                .value(0L)
                 .build();
     }
 }

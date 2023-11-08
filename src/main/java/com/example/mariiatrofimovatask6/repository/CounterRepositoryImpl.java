@@ -45,11 +45,16 @@ public class CounterRepositoryImpl implements CounterRepository {
 
     @Override
     public long getSum() {
-        return counters.values().stream().mapToLong(Counter::getCount).sum();
+        return counters.values().stream().mapToLong(Counter::getValue).sum();
     }
 
     @Override
     public List<String> getAllNames() {
         return new ArrayList<>(counters.keySet());
+    }
+
+    @Override
+    public void clear() {
+        counters.clear();
     }
 }

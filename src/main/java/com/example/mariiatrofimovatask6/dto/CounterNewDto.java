@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode
 @Schema(description = "Данные для добавления нового счетчика")
 public class CounterNewDto {
     @NotBlank(message = "Name shouldn't be blank")

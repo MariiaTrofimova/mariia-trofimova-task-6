@@ -62,8 +62,8 @@ public class CounterServiceImpl implements CounterService {
     }
 
     private void increaseCounter(Counter counter) {
-        long count = counter.getCount();
+        long count = counter.getValue();
         count += 1;
-        counter.setCount(count);
+        counter.setValue(count);
     }
 }

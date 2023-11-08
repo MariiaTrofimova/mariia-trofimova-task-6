@@ -10,8 +10,9 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode
 @Schema(description = "Счетчик")
 public class CounterDto {
     String name;
-    long count;
+    long value;
 }

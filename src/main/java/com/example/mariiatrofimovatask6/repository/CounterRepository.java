@@ -17,4 +17,6 @@ public interface CounterRepository {
     long getSum();
 
     List<String> getAllNames();
+
+    void clear();
 }

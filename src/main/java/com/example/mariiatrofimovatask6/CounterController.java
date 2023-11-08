@@ -45,6 +45,7 @@ public class CounterController {
     }
 
     @DeleteMapping(value = "/{name}", produces = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Удаление счетчика с указанным именем")
     public boolean delete(@PathVariable String name) {
         return service.delete(name);
@@ -56,7 +57,7 @@ public class CounterController {
         return service.getSum();
     }
 
-    @GetMapping(value = "/list", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/names", produces = APPLICATION_JSON_VALUE)
     @Operation(summary = "Получить уникальные имена счетчиков в виде списка")
     public List<String> getAllNames() {
         return service.getAllNames();
