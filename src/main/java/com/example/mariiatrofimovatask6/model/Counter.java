@@ -14,4 +14,8 @@ import lombok.RequiredArgsConstructor;
 public class Counter {
     private String name;
     private long value;
+
+    public void increase() {
+        value++;
+    }
 }
