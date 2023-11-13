@@ -24,14 +24,16 @@ public class CounterServiceImpl implements CounterService {
     public CounterDto add(CounterNewDto newDto) {
         Counter counter = toCounter(newDto);
         counter = repository.add(counter);
+        log.info("Counter {} was added", counter.getName());
         return toDTO(counter);
     }
 
     @Override
     public CounterDto update(String name) {
         Counter counter = getOrNotFound(name);
-        increaseCounter(counter);
+        counter.increase();
         counter = repository.update(counter);
+        log.info("Counter {} was increased to {}", counter.getName(), counter.getValue());
         return toDTO(counter);
     }
 
@@ -43,27 +45,27 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public boolean delete(String name) {
-        return repository.delete(name);
+        boolean deleted = repository.delete(name);
+        String logInfo = deleted ? "deleted" : "not found";
+        log.info("Counter {} " + logInfo, name);
+        return deleted;
     }
 
     @Override
     public long getSum() {
-        return repository.getSum();
+        long sum = repository.getSum();
+        log.info("Request for the sum of the values of all counters. Sum is {}", sum);
+        return sum;
     }
 
     @Override
     public List<String> getAllNames() {
+        log.info("Request for names of the values of all counters.");
         return repository.getAllNames();
     }
 
     private Counter getOrNotFound(String name) {
         return repository.get(name)
                 .orElseThrow(() -> new NotFoundException(String.format("Counter with name %s not found.", name)));
-    }
-
-    private void increaseCounter(Counter counter) {
-        long count = counter.getValue();
-        count += 1;
-        counter.setValue(count);
     }
 }
